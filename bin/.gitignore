@@ -5,3 +5,5 @@
 /TesteContas.class
 /CalculadoraDeImpostos.class
 /TestaTributaveis.class
+/SaldoInsuficienteException.class
+/TestaSaca.class

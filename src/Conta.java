@@ -18,31 +18,19 @@ public class Conta {
 		this.saldo += valor;
 	}
 	
-	public boolean saca(double valor) {
-		boolean retirada = this.retira(valor);
-		
-		if (retirada) {
-			System.out.println("Saque realizado com sucesso!");	
-			
-		} else {
-			System.out.println("Valor deve ser menor do que o saldo para realizar o saque");
-			
+	public void saca(double valor) throws SaldoInsuficienteException {
+		if(this.saldo < valor) {
+			throw new SaldoInsuficienteException("Saldo: "+ this.saldo + ", Valor: " + valor);
 		}
 		
-		return retirada;
+		this.saldo -= valor;
+		
 	}
 	
-	public boolean transfere(double valor, Conta destino) {
-		boolean retirada = this.retira(valor);
-		if(retirada) {
-			destino.deposita(valor);
-			System.out.println("Transferencia realizado com sucesso!");
-		} else {
-			System.out.println("Valor deve ser menor do que o saldo para realizar a transferencia");
-			
-		}
+	public void transfere(double valor, Conta destino) throws SaldoInsuficienteException {
+		this.saca(valor);
+		destino.deposita(valor);
 		
-		return retirada;
 	}
 	
 	public double getSaldo() {
@@ -84,12 +72,4 @@ public class Conta {
 		this.titular = titular;
 	}
 	
-	private boolean retira(double valor) {
-		if (this.saldo >= valor) {
-			this.saldo -= valor;
-			return true;
-		}
-		
-		return false;
-	}
 }
