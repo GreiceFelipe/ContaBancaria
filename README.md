@@ -113,3 +113,57 @@ public class TestArrayReferencias {
 ```
 
 O código acima copila porém ao rodar dá erro já que na posição 0 existe uma conta corrente e não poupança! 
+
+### ArrayList
+
+- Guarda referências;
+- É do pacote java.util;
+- Usa internamente um array;
+- Ao add um elemento sem definir a posição ele é add no fim da lista;
+- O limite de armaxzenamento no ArrayList é a memória da JVM.
+
+#### Exemplo
+
+```java
+package br.com.bytebank.banco.test.util;
+
+import java.util.ArrayList;
+
+public class Teste {
+    public static void main(String[] args) {
+
+        ArrayList lista = new ArrayList();
+
+        Conta cc = new ContaCorrente(22, 11);
+        lista.add(cc);
+
+        Conta cc2 = new ContaCorrente(22, 22);
+        lista.add(cc2);
+
+        System.out.println("Tamanho: " + lista.size());
+
+        lista.remove(0);
+        System.out.println("Tamanho: " + lista.size());
+
+        Conta cc3 = new ContaCorrente(33, 311);
+        lista.add(cc3);
+
+        Conta cc4 = new ContaCorrente(33, 322);
+        lista.add(cc4);
+
+        for(int i = 0; i < lista.size(); i++) {
+            Object oRef = lista.get(i);
+            System.out.println(oRef);
+        }
+
+        System.out.println("----------");
+        
+        // Outra maneira de fazer o for em java
+        for(Object oRef : lista) {
+            System.out.println(oRef);
+        }
+
+    }
+}
+```
+
