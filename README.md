@@ -167,3 +167,12 @@ public class Teste {
 }
 ```
 
+Para que um ArrayList seja de um tipo especifico: 
+
+```java
+ArrayList<Conta> lista = new ArrayList<Conta>();
+```
+
+-  `LinkedList`: Diferentemente do `ArrayList` ele não utiliza um array internamente. Ele armazena a referencia para o próximo objeto e para o anterior.
+-  `Vector`: Usa internamente a estrutura de um array para armazenamento, porém é thread safe (evita que multiplas threads alterem alguma informação do objeto de forma concorrente).
+
